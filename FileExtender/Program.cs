@@ -59,7 +59,9 @@ namespace FileExtender
                 case "-s":
                     settings.SubFoldersIncluded = true;
                     break;
-                default: throw new ArgumentException(string.Format("The console argument {0} passed is unrecognized.", arg));
+                default:
+                    Console.WriteLine(string.Format("The console argument {0} passed is unrecognized.", arg));
+                    break;
             }
         }
     }

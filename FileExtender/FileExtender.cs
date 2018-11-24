@@ -64,12 +64,11 @@ namespace FileExtender
         {
             switch (extensionAction)
             {
-                case ExtensionAction.Add:
-                    return string.Concat(currentFileName, extension);
                 case ExtensionAction.Replace:
                     return string.Concat(GetFileNameWithoutExtension(currentFileName), extension);
+                case ExtensionAction.Add:
                 default:
-                    return "";
+                    return string.Concat(currentFileName, extension);
             }
         }
 
