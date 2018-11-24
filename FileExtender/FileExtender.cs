@@ -39,20 +39,20 @@ namespace FileExtender
             }
         }
 
-        private void TraverseSubDirectories(string folder)
+        private void TraverseSubDirectories(string directory)
         {
-            string[] subDirectories = Directory.GetDirectories(extensionSettings.DirectoryLocation);
+            string[] subDirectories = Directory.GetDirectories(directory);
             foreach (string subDirectory in subDirectories)
             {
-                string path = Path.Combine(extensionSettings.DirectoryLocation, subDirectory);
+                string path = subDirectory.Replace('\\', '/').Replace("//", "/");
                 ExtendFilesInDirectory(path);
                 TraverseSubDirectories(path);
             }
         }
 
-        private void ExtendFilesInDirectory(string folderPath)
+        private void ExtendFilesInDirectory(string directory)
         {
-            string[] files = Directory.GetFiles(extensionSettings.DirectoryLocation, extensionSettings.SearchPattern);
+            string[] files = Directory.GetFiles(directory, extensionSettings.SearchPattern);
             foreach(string file in files)
             {
                 string newName = GetNewName(file, extensionSettings.Extension, extensionSettings.ExtensionAction);

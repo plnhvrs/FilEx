@@ -11,6 +11,12 @@ namespace FileExtender
     {
         static void Main(string[] args)
         {
+            if(args.Length < 3)
+            {
+                Console.WriteLine("To extend your files, you need to supply at least three arguments in the following order: 1) folder location 2) the desired extension 3) a search pattern (use * for all files).");
+                return;
+            }
+
             string folderLocation = args[0];
             string extension = args[1];
             string searchPattern = args[2];
