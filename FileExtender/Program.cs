@@ -23,7 +23,7 @@ namespace FileExtender
             {
                 for(int i = 3; i < args.Length; i++)
                 {
-                    InterpretArgument(args[i], settings);
+                    InterpretOptionalArgument(args[i], settings);
                 }
             }
             
@@ -45,7 +45,7 @@ namespace FileExtender
             }
         }
 
-        private static void InterpretArgument(string arg, ExtensionSettings settings)
+        private static void InterpretOptionalArgument(string arg, ExtensionSettings settings)
         {
             switch(arg)
             {
