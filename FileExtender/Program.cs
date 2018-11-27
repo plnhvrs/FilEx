@@ -26,6 +26,7 @@ namespace FileExtender
                     InterpretOptionalArgument(args[i], settings);
                 }
             }
+            Console.WriteLine(String.Format("Starting the extension of files using the extension {0} at location: {1}.", settings.Extension, settings.DirectoryLocation));
             
             FileExtender fileExtender = new FileExtender(settings);
             try
@@ -43,6 +44,7 @@ namespace FileExtender
             {
                 Console.WriteLine(String.Format("An unexpected error occurred while extending your files. The error reads: {0}", e.Message)); 
             }
+            Console.WriteLine("Extending files has succesfully finished.");
         }
 
         private static void InterpretOptionalArgument(string arg, ExtensionSettings settings)
@@ -51,9 +53,11 @@ namespace FileExtender
             {
                 case "-r":
                     settings.ExtensionAction = ExtensionAction.Replace;
+                    Console.WriteLine("The extension will be replaced instead of concatenated.");
                     break;
                 case "-s":
                     settings.SubFoldersIncluded = true;
+                    Console.WriteLine("Sub directories will be included.");
                     break;
                 default:
                     Console.WriteLine(string.Format("The console argument {0} passed is unrecognized.", arg));
